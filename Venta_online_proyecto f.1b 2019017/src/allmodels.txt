@@ -1,0 +1,41 @@
+PRODUCTOS:
+{
+    nombre: String,
+    stock: Number,
+    categoria:
+    {
+        ref: ["categoria"],
+        type: Schema.Types.ObjectId
+    },
+    precio: Number
+}
+
+CATEGORIAS:
+{
+    nombre: String,
+    descripcion: String
+}
+
+USUARIOS:
+{
+    usuario: {
+        type: String,
+        unique: true
+    }
+
+    password: String,
+    rol: String
+}
+
+FACTURAS:
+{
+    productos[]: {
+        nombre: String,
+        cantidad: Number,
+        precio: Number
+    },
+    precio_total: Number, // Será calculado automáticamente
+    fecha: Date.now,
+    cliente: String,
+    done: Boolean
+}
